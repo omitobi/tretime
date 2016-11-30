@@ -9,7 +9,6 @@
 header('Content-type: application/json');
 header('Access-Control-Allow-Origin: *');
 
-
 $get = isValidRequest($_GET);
 if(in_array('false', $get)){ echo json_encode($get); exit;}
 
@@ -20,12 +19,6 @@ exit;
 function getTimeDiff($strt, $en){
     $start_date = new DateTime('2007-09-01'.$strt.':00');
     $since_start = $start_date->diff(new DateTime('2007-09-01 '.$en.':00'));
-//    echo $since_start->days.' days total<br>';
-//    echo $since_start->y.' years<br>';
-//    echo $since_start->m.' months<br>';
-//    echo $since_start->d.' days<br>';
-//    echo $since_start->h.' hours<br>';
-//    echo $since_start->i.' minutes<br>';
     
     $hourMsg = responseMsg($since_start->h,'%s');
     $minuteMsg = responseMsg($since_start->i,'%s');
@@ -34,7 +27,6 @@ function getTimeDiff($strt, $en){
         "hour" => $hourMsg,
         "minute" => $minuteMsg
     );
-//    echo $since_start->s.' seconds<br>';
 }
 
 
